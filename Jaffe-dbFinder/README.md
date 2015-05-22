@@ -1,7 +1,7 @@
 dbFinder code for Shula et al 2013 data
 =======================================
 
-The code available here reproduces the results presented by Andrew Jaffe at the conference call of 2015-May-15 for identifying differentially bounded regions with the Shula et al 2013 data by running [derfinder](http://bioconductor.org/packages/derfinder/). `derfinder` is described at
+The code available here reproduces the results presented by Andrew Jaffe at the conference call of 2015-May-15 for identifying differentially binded regions with the Shula et al 2013 data by running [derfinder](http://bioconductor.org/packages/derfinder/). `derfinder` is described at
 
     Collado-Torres L, Frazee AC, Love MI, Irizarry RA, Jaffe AE, Leek JT.
     derfinder: Software for annotation-agnostic RNA-seq differential expression
