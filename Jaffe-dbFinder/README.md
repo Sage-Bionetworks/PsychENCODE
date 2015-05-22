@@ -1,9 +1,11 @@
-dbFinder code for Shula et al data
-==================================
+dbFinder code for Shula et al 2013 data
+=======================================
 
 The code available here reproduces the results presented by Andrew Jaffe at the conference call of 2015-May-15 for identifying differentially bounded regions with the Shula et al 2013 data by running [derfinder](http://bioconductor.org/packages/derfinder/). `derfinder` is described at
 
-    Collado-Torres L, Frazee AC, Love MI, Irizarry RA, Jaffe AE, Leek JT. derfinder: Software for annotation-agnostic RNA-seq differential expression analysis. bioRxiv 015370 (2015). doi:10.1101/015370.
+    Collado-Torres L, Frazee AC, Love MI, Irizarry RA, Jaffe AE, Leek JT.
+    derfinder: Software for annotation-agnostic RNA-seq differential expression
+    analysis. bioRxiv 015370 (2015). doi:10.1101/015370.
     
 
 The analysis used a data cutoff of 2, models that adjusted for sample depth and tested for a linear effect in age in years, an F-statistic cutoff corresponding to a p-value of 0.01, and 100 permutations. Only the Neun+ samples were used in this analysis. For age in PCW, we used the following formula to get the age in years:
