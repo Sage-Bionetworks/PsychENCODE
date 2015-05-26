@@ -1,0 +1,66 @@
+# Getting started with Synapse using R
+
+*Import the synapse R client and log in to Synapse using locally stored credentials. New users have to supply username and password or their Synapse session API key*
+```{r}
+library(synapseClient)
+synapseLogin()
+```
+
+
+#### Start by creating a subfolder in your with an existing folder (could also be project)
+```{r}
+id = 'syn4217886'   
+myFolder = synStore(Folder(name='Analysis', parentId=id))
+```
+
+
+#### Create a wiki for the project and put some text on it:
+```{r}
+placeholderText = "#Lorem ipsum 
+Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum."
+wiki = WikiPage(owner=myFolder, title="Analysis summary", markdown=placeholderText)
+wiki = synStore(wiki)
+```
+
+#### See your folder online:
+```{r}
+onWeb(myFolder)
+```
+
+#### Create a plot
+```{r}
+x = rnorm(500,mean=6,sd=4)
+y = rnorm(500,mean=2,sd=3)
+png(file="demo_plot.png")
+par(mfrow = c(1,2))
+hist(x, col = "red", xlim = range(-10,15))
+hist(y, col = "blue", xlim = range(-10,15))
+dev.off()
+
+plotFileEntity = File(path="demo_plot.png", parentId=myFolder$properties$id)
+synSetAnnotations(plotFileEntity) = list(sampleType="iPSC", institution="FredHutch", protocol="A43.6")
+```
+
+###and upload to the created folder including provenance:
+```{r}
+plotFileEntity = synStore(plotFileEntity, 
+                          executed='https://github.com/Sage-Bionetworks/PsychENCODE/exampleSynapseUpload/Synapse_R_API_demo.Rmd', 
+                          activityName="plot distributions", 
+                          activityDescription="Generate histograms for demo",forceVersion=F)
+```
+
+#### Alternative: Upload the full analysis to a Synapse Wiki
+```{r}
+#library(devtools)
+#source_gist("https://gist.github.com/brian-bot/6117476")
+#thisFile <- "./Synapse_R_API_demo.Rmd"
+# knit2synapse(thisFile, plotFileEntity, overwrite = T)
+```
+
+#### Since this is demo we can delete the created folder and files
+```{r}
+#synDelete(myFolder)
+```
+
+
+
