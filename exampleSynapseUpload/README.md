@@ -2,7 +2,7 @@
 
 This folder contains examples for creating content in Synapse and also interacting with content already in Synapse.
 
-*Synapse_R_API_demo.Rmd contains a small example using R to create content in Synapse.  Specifically this example shows how to: 
+* Synapse_R_API_demo.Rmd contains a small example using R to create content in Synapse.  Specifically this example shows how to: 
    1. Create a folder
    2. Add a plot 
    3. Annotate this plot and add a wiki describing it
