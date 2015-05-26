@@ -41,19 +41,19 @@ plotFileEntity = File(path="demo_plot.png", parentId=myFolder$properties$id)
 synSetAnnotations(plotFileEntity) = list(sampleType="iPSC", institution="FredHutch", protocol="A43.6")
 ```
 
-###and upload to the created folder including provenance:
+###Upload to the created folder including provenance:
 ```{r}
 plotFileEntity = synStore(plotFileEntity, 
-                          executed='https://github.com/Sage-Bionetworks/PsychENCODE/exampleSynapseUpload/Synapse_R_API_demo.Rmd', 
+                          executed='https://github.com/Sage-Bionetworks/PsychENCODE/blob/master/exampleSynapseUpload/Synapse_R_API_demo.Rmd', 
                           activityName="plot distributions", 
                           activityDescription="Generate histograms for demo",forceVersion=F)
 ```
 
 #### Alternative: Upload the full analysis to a Synapse Wiki
 ```{r}
-#library(devtools)
-#source_gist("https://gist.github.com/brian-bot/6117476")
-#thisFile <- "./Synapse_R_API_demo.Rmd"
+# library(devtools)
+# source_gist("https://gist.github.com/brian-bot/6117476")
+# thisFile <- "./Synapse_R_API_demo.Rmd"
 # knit2synapse(thisFile, plotFileEntity, overwrite = T)
 ```
 
