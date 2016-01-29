@@ -28,11 +28,11 @@ for result in results:
 			allKeysInProject.add(key)
 		if isinstance(temp[key], list):
 			for val in temp[key]:
-				if val in allValsInProject: continue
-				allValsInProject.add(val)
+				if str(val) in allValsInProject: continue
+				allValsInProject.add(str(val))
 		else:
-			if temp[key] in allValsInProject: continue
-			allValsInProject.add(temp[key])
+			if str(temp[key]) in allValsInProject: continue
+			allValsInProject.add(str(temp[key]))
 
 print 'Number of key terms in project: %d' % len(allKeysInProject)
 print 'Number of value terms in project: %d' % len(allValsInProject)
@@ -50,9 +50,9 @@ for key in annotations:
 	temp = annotations[key]
 	if isinstance(temp, list):
 		for element in temp:
-			allValsInVocab.append(element)
+			allValsInVocab.append(str(element))
 	else:	
-		allValsInVocab.append(temp)
+		allValsInVocab.append(str(temp))
 allUniqueValsInVocab = set(allValsInVocab)
 if not allValsInProject <= allValsInVocab:
 	print 'Values in use that are not found in dictionary: '
