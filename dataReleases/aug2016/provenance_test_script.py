@@ -20,7 +20,6 @@ def queryGraphDB(filename, filetypeA, filetypeB, projectId):
     query = query.format(filetypeA, filetypeB, projectId)
     print 'Printing formatted query'
     print query
-    print 'Sending query'
 
     # Send Cypher query
     logging.info('Sending query')
@@ -28,9 +27,10 @@ def queryGraphDB(filename, filetypeA, filetypeB, projectId):
     df.to_csv(str(filename))
 
     logging.info('Done.')
-    print 'Done.'
 
 if __name__ == '__main__':
+    logger = logging.getLogger()
+    logger.setLevel(logging.INFO)
     parser = argparse.ArgumentParser(description=
                 'Please input the projectId to generate a csv relating to provenance')
     parser.add_argument('file', nargs='?', help='Input the filename to write results to')
@@ -40,7 +40,6 @@ if __name__ == '__main__':
     args = parser.parse_args()
 
     # Connect to graph
-    print 'Connecting to Neo4j and authenticating user credentials'
     logging.info('Connecting to Neo4j and authenticating user credentials')
     with open('credentials.json') as json_file:
         db_info=json.load(json_file)
