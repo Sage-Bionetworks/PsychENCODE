@@ -39,11 +39,20 @@ mkdir -p Reports
 mkdir -p Reports/\${ID}
 
 module load samtools/1.1
+# CpG 
+/users/ajaffe/software/bismark_v0.16.3/bismark_methylation_extractor --single-end \
+	--cytosine_report --genome_folder /dcl01/lieber/ajaffe/Annotation/Homo_sapiens/UCSC/hg19/Sequence/WholeGenomeFasta/ \
+	--gzip --multicore 4 --bedGraph  \
+	-o Reports/\${ID} --split_by_chromosome \
+	/dcl01/lieber/WGBS/LIBD_Data/BAM/\${ID}.concatenated.sorted.duplicatesRemoved.bam
+
+# also extracts non CpG
 /users/ajaffe/software/bismark_v0.16.3/bismark_methylation_extractor --single-end \
 	--cytosine_report --genome_folder /dcl01/lieber/ajaffe/Annotation/Homo_sapiens/UCSC/hg19/Sequence/WholeGenomeFasta/ \
 	--gzip --multicore 4 --bedGraph  \
 	-o Reports/\${ID} --CX_context --split_by_chromosome \
 	/dcl01/lieber/WGBS/LIBD_Data/BAM/\${ID}.concatenated.sorted.duplicatesRemoved.bam
+
 
 echo "**** Job ends ****"
 date
